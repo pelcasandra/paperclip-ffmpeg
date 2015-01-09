@@ -295,7 +295,7 @@ module Paperclip
     end
 
     def self.detect_command(command)
-      command = "if command -v #{command} 2>/dev/null; then echo \"true\"; else echo \"false\"; fi"
+      command = ";if command -v #{command} 2>/dev/null; then echo \"true\"; else echo \"false\"; fi"
       Ffmpeg.log(command) if @whiny
       result = Cocaine::CommandLine.new(command).run
       Ffmpeg.log("Result of command: #{result}") if @whiny
